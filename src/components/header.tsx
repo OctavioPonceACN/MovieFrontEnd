@@ -1,9 +1,10 @@
-import React from 'react'
+import type { HeaderProps } from "../types/header";
 
-const Header = () => {
+
+const Header:React.FC<HeaderProps> = ({title}) => {
   return (
     <div>
-      Header Component
+      {title}
     </div>
   )
 }

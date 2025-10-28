@@ -1,6 +1,6 @@
-import React from 'react'
+import type { ContentProps } from "../types/content";
 
-const Content = () => {
+const Content:React.FC<ContentProps> = () => {
   return (
     <div>
       Content Component

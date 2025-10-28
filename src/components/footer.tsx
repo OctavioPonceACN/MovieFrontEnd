@@ -1,9 +1,9 @@
-import React from 'react'
+import type { FooterProps } from "../types/footer";
 
-const Footer = () => {
+const Footer:React.FC<FooterProps> = ({title,date}) => {
   return (
     <div>
-      Footer Component
+      {title} - {(date ? new Date(date) : new Date()).toLocaleDateString()}
     </div>
   )
 }

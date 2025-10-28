@@ -9,9 +9,9 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Content />
-      <Footer />
+      <Header title={'Movie App'} />
+      <Content data={[]} />
+      <Footer title={'Movie App'} date={new Date()} />
     </>
   )
 }
