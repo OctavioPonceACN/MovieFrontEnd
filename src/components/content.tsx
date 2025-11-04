@@ -1,17 +1,20 @@
-import { useState } from "react";
 import type { ContentProps } from "../types/content";
-import type { Movie } from "../types/movie";
 import MovieCard from "./movieCard";
+import useMovies from "../hooks/useMovies";
 
 const Content: React.FC<ContentProps> = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const { loading, movies, showRecent, toggleShowRecent, error } = useMovies();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
       {movies.length > 0 ? (
         movies.map((movie) => <MovieCard movie={movie} key={movie.movieId} />)
       ) : (
-        <div>Loading...</div>
+        <div>No se encuentran peliculas</div>
       )}
     </div>
   );
