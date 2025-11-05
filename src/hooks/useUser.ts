@@ -1,12 +1,14 @@
-import { useState } from "react";
-import type { UseUserResult } from "../types/useUserResult";
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
+import type { UserContextType } from "../types/user";
 
-function useUser(): UseUserResult {
-  const [userName, setUserName] = useState<string | null>("Octavio Ponce");
+function useUser(): UserContextType {
+  const context = useContext(UserContext);
 
-  return {
-    userName,
-  };
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
 }
 
 export default useUser;

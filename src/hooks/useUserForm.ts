@@ -42,7 +42,7 @@ function useUserForm(
 
     setErrors({});
 
-    //navigate("/", { replace: true });
+    navigate("/", { replace: true });
   };
 
   return {

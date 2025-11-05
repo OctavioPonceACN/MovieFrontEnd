@@ -4,12 +4,14 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
 import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import { NavLink } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
+  const { theme, toggleTheme } = useUser();
   return (
     <>
       <h1>{title}</h1>
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar bg={theme} variant={theme} expand="lg" fixed="top">
         <Container>
           <Navbar.Brand>{title}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,10 +26,16 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
               <Nav.Link as={NavLink} to="/user-form" end>
                 User Form
               </Nav.Link>
-              <NavDropdown title="Theme" id="basic-nav-dropdown">
-                <NavDropdown.Item>Light</NavDropdown.Item>
+              <NavDropdown
+                title="Theme"
+                id="basic-nav-dropdown"
+                onSelect={(eventKey) => {
+                  toggleTheme(eventKey as "light" | "dark");
+                }}
+              >
+                <NavDropdown.Item eventKey="light">Light</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>Dark</NavDropdown.Item>
+                <NavDropdown.Item eventKey="dark">Dark</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

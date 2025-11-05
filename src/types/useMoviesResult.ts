@@ -1,3 +1,4 @@
+import type { Genre } from "./genre";
 import type { Movie } from "./movie";
 
 export interface UseMoviesResult {
@@ -6,4 +7,6 @@ export interface UseMoviesResult {
   showRecent: boolean;
   toggleShowRecent: () => void;
   error: string | null;
+  genres: Genre[];
+  onGenreChange: (genre: string) => void;
 }
