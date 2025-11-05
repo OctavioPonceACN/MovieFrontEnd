@@ -1,16 +1,13 @@
-import "./App.css";
-import Content from "./components/content";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import { useRoutes } from "react-router-dom";
+import { appRoutes } from "./routes/routes";
+import { Suspense } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const routing = useRoutes(appRoutes);
   return (
     <>
-      <Header title={"Catalogo de peliculas de Accenture"} />
-      <hr />
-      <Content />
-      <hr />
-      <Footer title={"Movie App"} date={new Date()} />
+      <Suspense fallback={<p>Loading...</p>}> {routing}</Suspense>
     </>
   );
 }
